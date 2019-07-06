@@ -1,0 +1,13 @@
+name: SynDropParty
+author: Synysterrr
+version: 1.0
+main: me.syn.syndp.main.Main
+description: Automated DropParty System and GiveAways
+
+commands:
+  syndropparty:
+   aliases: [syndp, dropparty, dp]
+   description: DropParty Base Command
+  syngiveaway:
+   aliases: [synga, giveaway, ga]
+   description: GiveAway Base Command

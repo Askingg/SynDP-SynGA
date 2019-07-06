@@ -1,0 +1,169 @@
+#«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»
+#   DropParty & GiveAway developer » Synysterrr
+#   Discord » $ynysterrr#2481
+#   Spigot » https://spigotmc.org/members/askingg.534547/
+#   GitHub » https://github.com/askingg
+#«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»-«»
+
+#Replacement for '%prefix%' in any messages
+prefix: '&8&l(&b&l!&8&l)&b &l»&7'
+generalMessages:
+  #When a user is denied permission to an action / command
+  noPermission: '%prefix% Sorry, but you don''t have permission to do that'
+  #When a console attempts to execute a command that only a player can use
+  mustBePlayer: '%prefix% Sorry, but only players can execute that command'
+  #When a user reloads the configuration file
+  configReloaded: '%prefix% The config file was successfully reloaded'
+
+giveaway:
+  #The format of the /SynGA Command (Shows you all of the available commands)
+  helpFormat:
+    #The format for each command within the message
+    #Placeholders »
+    # » %command% » The command the player would run (Without a /)
+    # » %description% » The description of the command
+    command: '&8● &b/%command% &7%description%'
+    #The top of the help list, to remove set to header: {}
+    header:
+    - '%prefix% Commands for &bSynGiveAway'
+    #The bottom of the help list, to remove set to footer: {}
+    footer: 
+    - '&7Developed by &b$ynysterrr'
+  #When a player trys to giveaway an item within this list, it will deny it and send them the 'blacklistedMaterial' message, if you wish to disable this set it to materialBlacklist: {}
+  materialBlacklist:
+  - DIAMOND_PICKAXE
+  - TRIPWIRE_HOOK
+  #The amount of players online required to create a giveaway (Must be at least 2, though I would recommend at least 3)
+  playersRequired: 3
+  #The amount of seconds it takes before the item is actually given away - The amount of time that the user has to cancel their giveaway
+  delay: 5
+  #The name of the inventory giveaway preview gui
+  previewInventoryName: '&b&l%player%''s Inventory Giveaway'
+  error:
+    #When a player attempts to start a giveaway but one is already active
+    giveawayAlreadyActive: '%prefix% Sorry, but there is already an active giveaway active'
+    #When a player runs the /SynGA Hand command and is not holding an item
+    emptyHand: '%prefix% Sorry, but you cannot giveaway air'
+    #When a player trys to giveaway an item within the 'materialBlacklist' list
+    blacklistedMaterial: '%prefix% Sorry, but &c%material%&7 is a blacklisted material'
+    #When a player attempts to cancel a giveaway, but there is no giveaway active
+    noActiveGiveaway: '%prefix% Sorry, but there is currently no active giveaway'
+    #When a player attempts to cancel a giveaway that they are not hosting (Someone else's giveaway)
+    notYourGiveaway: '%prefix% Sorry, but you''re not hosting the current giveaway'
+    #When there are not enough players online to run a giveaway
+    #Placeholders »
+    # » %online% » The amount of players online
+    # » %required% » The amount of players required to run a giveaway
+    notEnoughPlayers: '%prefix% Sorry, but there''re not enough players online &c%online%&8/&b%required%'
+    #Message when a player runs the /SynGA Inventory command, but has no items within their inventory
+    inventoryEmpty: '%prefix% Sorry, but your inventory is empty'
+    #Message when a player attempts to preview an inventory giveaway
+    noActiveInventoryGiveaway: '%prefix% Sorry, but there is currently no active inventory giveaway'
+    #Message when a player wins a giveaway but their inventory is full, unfortunately I cannot make it drop the item - like I originally intented on and tried
+    inventoryFull: '%prefix% Sorry, but your inventory was full'
+  success:
+    #Broadcasted message when a player gives away a singular item (Hovering over this will display the item)
+    #Placeholders »
+    # » %player% » The player's name
+    # » %itemname% » The displayname of the item
+    # » %itemmaterial% » The material of the item
+    # » %itemamount% » The amount of the item
+    giveawayBroadcast: '%prefix%&b %player%&7 is giving away an item&8 (&7Hover&8)&b &b &b &b &b &b &l»&7 %itemname%&b x%itemamount%'
+    #Message sent to the player who started a giveaway
+    giveawayPrivateMessage: '%prefix% If you wish to cancel this giveaway, execute &b/SynGA Cancel'
+    #Broadcasted message when a player cancels their giveaway
+    giveawayCancelledBroadcast: '%prefix%&b %player%&7 cancelled the giveaway'
+    #Broadcasted when someone wins a giveaway
+    #Placeholders »
+    # » %player% » The player's who won the giveaway
+    # » %starter% » The player who created the giveaway
+    giveawayWon: '%prefix%&b %player%&7 has won the giveaway hosted by &b%starter%'
+    #Broadcasted when a player created an inventory giveaway (Clicking this message will open the inventory preview menu)
+    giveawayInventoryBC: '%prefix%&b %player%&7 is giving away all of the items in their inventory &8(&7Click&8)'
+    #The hover format when an invnetory giveaway is executed
+    #Listing all players, and below the name of the player it will list all of their winnings
+    inventoryHover:
+      #The format of a player's name
+      playerName: '&b&l%player%&8 &l»'
+      #The format of the item(s) the player wins
+      #Placeholders »
+      # » %itemname% » The displayname of the item
+      # » %itemmaterial% » The material of the item
+      # » %itemamount% » The amount of the item
+      item: '&b &l»&7 %itemname%&7 x%itemamount%'
+      #The format if the player didn't win any items
+      noWinnings: '&b &l»&7 NONE'
+    #Broadcasted when an inventory giveaway ends
+    giveawayInventoryWonBC: '%prefix% Hover the view the results of &b%player%&7''s giveaway'
+    
+    
+dropparty:
+  #The format of the /SynDP Command (Shows you all of the available commands)
+  helpFormat:
+    #The format for each command within the message
+    #Placeholders »
+    # » %command% » The command the player would run (Without a /)
+    # » %description% » The description of the command
+    command: '&8● &b/%command% &7%description%'
+    #The top of the help list, to remove set to header: {}
+    header:
+    - '%prefix% Commands for &bSynDropParty'
+    #The bottom of the help list, to remove set to footer: {}
+    footer: 
+    - '&7Developed by &b$ynysterrr'
+  #Here is where the actual dropparties will be setup
+  dropParties:
+    #The name of the dropparty, alll names must be unique
+    regular:
+      #DropParty Types »
+      # » FLOOR » Items are dropped in the floor, you drop items on the 
+      # » DIRECT » Items are added into player's inventories, you can also use commands aswell as items with this method. 
+      dpType: direct
+      #The reward pool for this dropparty, if you selected 'direct' in dpType you may use commands aswell as items - if you selected 'floor' in dpTypes you many only use items
+      drops:
+        #The 'name' of the reward, this will not be seen in game, the only catch is they are all required to be different
+        a:
+          #rewardTypes Types »
+          # » ITEM » An item to be dropped/given to the player: Works for both dpTypes
+          # » COMMAND » A command to be executed, this works only for the 'direct' dpType
+          rewardType: item
+          #The bukkit material of the item, these can be found at: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+          material: COAL
+          #The data of the item - If the item has colors or variations - default is 0
+          data: 0
+          #The amount of the item
+          amount: 1
+          #The display name of the item, for no custom name set to name: ''
+          name: '&8Coal'
+          #The lore of the item, for no lore set to lore: {}
+          lore:
+          - '&7'
+          - '&7Just a peice of &8Coal'
+          #Any enchantments you wish for the item to have, please do not include spaces in the enchant names, for no enchants set to enchants: {}
+          enchants: {}
+        b:
+          rewardType: item
+          material: BLAZE_ROD
+          data: 0
+          amount: 1
+          name: '&3&lMagical&b &lStaff'
+          lore:
+          - '&7'
+          - '&7A &3magical&7 weapon'
+          enchants: 
+          - sharpness;5
+          - fireaspect;3
+          - knockback;3
+          
+          
+  #This section only required alterations if you chose the 'floor' option in dpType
+  floorSettings:
+    
+  
+  #This section only required alterations if you chose the 'direct' option in dpType
+  directSettings:
+    #Time in seconds between giving items
+    delayBetweenItems: 1
+    #Duration of the giveaways
+    duration:
+    
